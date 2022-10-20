@@ -10,16 +10,11 @@ export interface Props {
 export default function Layout({ children }: Props) {
   return (
     <>
-      <div className='flex min-h-screen'>
+      <div className="flex min-h-screen">
         <Navbar />
-        <main className='w-full'>
-          <div>
-
-          </div>
-          <div>
-            <Slider/>
-            {children}
-          </div>
+        <main className="w-full">
+          <Slider />
+          <div>{children}</div>
         </main>
       </div>
     </>
