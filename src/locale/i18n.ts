@@ -15,7 +15,7 @@ i18n
   .init({
     detection: DETECTION_OPTIONS,
     fallbackLng: 'en',
-    debug: true,
+    debug: false,
     resources: {
       en: { translation: en },
     },
