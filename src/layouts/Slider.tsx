@@ -1,7 +1,7 @@
 export default function Slider() {
   return (
     <div
-      className="sticky"
+      className="sticky bg-[white]"
       style={{ padding: '17px 44px', top: 0 }}
     >
       <div className="flex justify-between">

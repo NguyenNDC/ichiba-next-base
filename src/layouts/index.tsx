@@ -12,10 +12,14 @@ export default function Layout({ children }: Props) {
     <>
       <div className="flex min-h-screen">
         <Navbar />
-        <main className="w-full">
+        <section className="w-full bg-[#E5E5E5] min-h-screen">
           <Slider />
-          <div>{children}</div>
-        </main>
+          <div className='flex justify-center p-10'>
+            <div style={{width: "1200px", minWidth: "auto"}}>
+            {children}
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );

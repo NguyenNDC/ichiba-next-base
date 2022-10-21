@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <div
       className="px-4 pt-3.5"
-      style={{ width: '272px', boxShadow: '2px 0 5px #c3c3c3' }}
+      style={{ width: '272px', boxShadow: '2px 0 5px #c3c3c3', zIndex: 2 }}
     >
       <div className="text-3xl text-[var(--color-bg-orange)]">LOGO</div>
       <div
