@@ -1,25 +1,58 @@
-import { combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import { Action } from 'redux';
-import { createWrapper } from 'next-redux-wrapper';
-import counterReducer from './slide/counter'
+import {
+  Action,
+  combineReducers,
+  configureStore,
+  ThunkAction,
+} from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-const makeStore = () =>
-  configureStore({
-    reducer: combineReducers({
-      counter: counterReducer
-    }),
-    devTools: true,
+import counterReducer from './slide/counter';
+import appReducer from './slide/app';
+
+const persistConfig = {
+  key: 'primary',
+  storage,
+};
+
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  app: appReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export function makeStore() {
+  return configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
   });
+}
 
-export type AppStore = ReturnType<typeof makeStore>;
-export type AppState = ReturnType<AppStore['getState']>;
+export const store = makeStore();
+export const persistor = persistStore(store);
+
+export type AppState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   AppState,
   unknown,
-  Action
+  Action<string>
 >;
-
-export const wrapper = createWrapper<AppStore>(makeStore);
-
-export const selectApp = () => (state: AppState) => state;

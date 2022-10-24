@@ -23,7 +23,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function ThemeProvider({ initialTheme, children }: Props) {
+export default function ThemeProvider({ initialTheme, children }: Props) {
   const [theme, setTheme] = React.useState(getInitialTheme);
 
   const rawSetTheme = (theme: string) => {

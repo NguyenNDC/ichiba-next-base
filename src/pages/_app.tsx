@@ -1,22 +1,25 @@
 import '../../assets/css/globals.css';
 import type { AppProps } from 'next/app';
+import { PersistGate } from 'redux-persist/integration/react';
 import Layout from '../layouts';
 import { Provider } from 'react-redux';
-import { wrapper } from '../store/store';
-import { ThemeProvider } from '../context/theme/themeContext';
-
+import ThemeProvider from '../context/theme/themeContext';
+import { persistor, store } from 'src/store/store';
 
 import '../locale/i18n';
 
-function MyApp({ Component, ...rest }: AppProps) {
-  const { store, props } = wrapper.useWrappedStore(rest);
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <ThemeProvider>
-        <Layout>
-          <Component {...props.pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        {() => (
+          <ThemeProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ThemeProvider>
+        )}
+      </PersistGate>
     </Provider>
   );
 }
