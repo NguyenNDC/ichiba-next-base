@@ -11,10 +11,10 @@ export default function Layout({ children }: Props) {
     <>
       <div className='flex min-h-screen'>
         <Navbar />
-        <section className='w-full bg-[#E5E5E5] min-h-screen'>
+        <section className='w-full bg-[#F2F4F8] min-h-screen'>
           <Slider />
-          <div className='flex justify-center p-10'>
-            <div style={{ width: '1200px', minWidth: 'auto' }}>{children}</div>
+          <div className='flex justify-center'>
+            <div className='w-[1030px] pt-6'>{children}</div>
           </div>
         </section>
       </div>

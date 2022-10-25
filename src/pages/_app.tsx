@@ -6,8 +6,6 @@ import { Provider } from 'react-redux';
 import ThemeProvider from '../context/theme/themeContext';
 import { persistor, store } from 'src/store/store';
 
-import '../locale/i18n';
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>

@@ -2,10 +2,6 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Switch } from '@headlessui/react';
 
-const data = {
-  firstName: 'cuong',
-  gender: 'male',
-};
 
 export default function App() {
   const {
