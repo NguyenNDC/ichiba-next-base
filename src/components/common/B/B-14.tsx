@@ -6,7 +6,11 @@ interface props {
   className: string;
 }
 
-export default function B({ children, className }: props) {
+/*
+  font-size: 14px 
+  font-weight: 600
+*/
+export default function B14({ children, className }: props) {
   return (
     <p
       className={classnames(`text-sm font-semibold not-italic`, className)}

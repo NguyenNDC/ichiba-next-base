@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 interface props {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
   href: string;
   icon?: string;
@@ -18,18 +18,18 @@ export default function A({ children, className, href, icon }: props) {
     >
       <a
         className={classnames(
-          `text-sm font-medium not-italic text-[#005DF8]`,
+          `whitespace-nowrap text-[13px] font-medium not-italic text-[#005DF8]`,
           className
         )}
       >
-        <p>{children}</p>
+        <p className="whitespace-nowrap mr-3">{children}</p>
         {icon ? (
-          <div className="ml-3">
-            <Image
-              src={icon}
-              alt="icon"
-            />
-          </div>
+          <Image
+            width={'14'}
+            height={'14'}
+            src={icon}
+            alt="icon"
+          />
         ) : null}
       </a>
     </Link>

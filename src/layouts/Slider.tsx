@@ -1,80 +1,50 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import lang from '../../assets/svg/common/lang.svg';
-import down from '../../assets/svg/common/down.svg';
-import search from '../../assets/svg/common/search.svg';
-import vertical from '../../assets/svg/common/vertical.svg';
-import bell from '../../assets/svg/common/bell.svg';
-import user from '../../assets/svg/common/user.svg';
+import lang from '@/svg/common/lang.svg';
+import down from '@/svg/common/down.svg';
+import search from '@/svg/common/search.svg';
+import vertical from '@/svg/common/vertical.svg';
+import bell from '@/svg/common/bell.svg';
+import user from '@/svg/common/user.svg';
 import React, { useState } from 'react';
-import classnames from 'classnames';
-
-interface IItem {
-  iconLeft?: string;
-  children: React.ReactNode;
-  iconRight?: string;
-  ml?: {
-    ml1: number;
-    ml2: number;
-  };
-}
-
-const NavItem: React.FC<IItem> = ({
-  iconLeft,
-  children,
-  iconRight,
-  ml = { ml1: 1.5, ml2: 1 },
-}) => {
-  return (
-    <div className="flex items-center py-4 px-[9px]">
-      {iconLeft ? (
-        <Image
-          src={iconLeft}
-          alt="logo"
-        />
-      ) : null}
-
-      <div
-        className={`flex items-center ml-${ml.ml1} text-base font-normal text-[13px]`}
-      >
-        {children}
-      </div>
-      <div className={`ml-${ml.ml2}`}>
-        {iconRight ? (
-          <Image
-            src={iconRight}
-            alt="logo"
-          />
-        ) : null}
-      </div>
-    </div>
-  );
-};
+import P13 from '@/components/common/P/P-13';
+import Menus, { NavItem } from '@/components/common/Menu';
 
 export default function Slider() {
   const [notification, setNotification] = useState<boolean>(true);
   const router = useRouter();
   return (
-    <div className="sticky bg-[white]">
+    <div className="sticky top-0 bg-[white]">
       <div className="flex justify-between px-[31px]">
         <div className="flex">
-          <NavItem
+          <Menus
+            title={'Location'}
             iconLeft={lang}
             iconRight={down}
-          >
-            Location
-          </NavItem>
-          <NavItem iconRight={down}>Languages</NavItem>
+            content={['cuong', 'demo']}
+          />
+          <Menus
+            title={'Languages'}
+            iconRight={down}
+            content={['cuong', 'demo']}
+          />
 
-          <NavItem iconRight={down}>Currency (PEN)</NavItem>
-          <NavItem>Exchange rate: 1$ ~ 23.000đ</NavItem>
+          <Menus
+            title={'Currency (PEN)'}
+            iconRight={down}
+            content={['cuong', 'demo']}
+          />
+
+          <NavItem>
+            <P13>Exchange rate: 1$ ~ 23.000đ</P13>
+          </NavItem>
         </div>
 
         <div className="flex">
           <NavItem ml={{ ml1: 2, ml2: 2 }}>
             <Image
-              width={24}
-              height={24}
+              width={'22'}
+              height={'22'}
               src={search}
               alt="logo"
             />
@@ -87,7 +57,7 @@ export default function Slider() {
             />
           </NavItem>
 
-          <NavItem ml={{ ml1: 2, ml2: 2 }}>
+          <NavItem>
             <div className="flex items-center relative">
               <Image
                 src={bell}
@@ -97,16 +67,15 @@ export default function Slider() {
                 <span className="bg-[#E11F2F] w-2.5 h-2.5 rounded-full absolute top-0 right-0"></span>
               ) : null}
             </div>
-            <p className="ml-2">Notification</p>
+            <P13 className="ml-2">Notification</P13>
           </NavItem>
 
-          <NavItem
-            ml={{ ml1: 2, ml2: 2 }}
+          <Menus
+            title={'Customer Portal Logins'}
             iconLeft={user}
             iconRight={down}
-          >
-            Customer Portal Logins
-          </NavItem>
+            content={['cuong', 'demo']}
+          />
         </div>
       </div>
       <div className="w-full h-px bg-[#DDE1E6]"></div>

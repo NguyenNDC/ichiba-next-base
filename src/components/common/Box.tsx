@@ -10,7 +10,7 @@ interface props {
 export default function Box({ children, className }: props) {
   return (
     <div
-      className={classnames(` bg-[#FFFFFF]  p-4 rounded-xl`, className)}
+      className={classnames(className, `bg-[#FFFFFF]  p-4 rounded-xl`)}
     >
       {children}
     </div>
