@@ -6,6 +6,10 @@ import { Provider } from 'react-redux';
 import ThemeProvider from '../context/theme/themeContext';
 import { persistor, store } from 'src/store/store';
 
+import { setInterceptors } from 'src/plugin/axios';
+
+setInterceptors(store);
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>

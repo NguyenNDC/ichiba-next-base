@@ -6,23 +6,23 @@ import Track from '@/components/elements/dashbord/track';
 
 export default function Dashboad() {
   return (
-    <div className="flex justify-between">
-      <div className="w-[712px]">
+    <div className='flex justify-between'>
+      <div className='w-[712px]'>
         <div>
           <InforStore />
         </div>
-        <div className="mt-4">
+        <div className='mt-4'>
           <MyShipments />
         </div>
         <div className='mt-4'>
-          <Inbox/>
+          <Inbox />
         </div>
       </div>
-      <div className="w-[294px]">
+      <div className='w-[294px]'>
         <div>
           <Total />
         </div>
-        <div className="mt-4">
+        <div className='mt-4'>
           <Track />
         </div>
       </div>
